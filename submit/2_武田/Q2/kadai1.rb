@@ -1,23 +1,20 @@
 num = ARGV[0].to_i
 
-
 case num
-when  4...10
+when  4..10
 	puts "おはよう"
-when 11...18
+when 11..18
 	puts "こんにちは"
-when 19...24, 1...3
+when 19..24, 1..3
 	puts "こんばんは"
 end
 
 
-
-puts num
-if (4...10) === num then 
+if (4..10) === num then 
 	puts "おはよう"
-elsif (10...18) === num then
+elsif (11..18) === num then
 	puts "こんにちは"
-elsif (19...24) === num || (1...3) === num then
+elsif (19..24) === num || (1..3) === num then
 	puts "こんばんは"
 end
 	
