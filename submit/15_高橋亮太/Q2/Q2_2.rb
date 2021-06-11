@@ -1,4 +1,4 @@
-bmi = ARGV[0] / ARGV[1] * ARGV[1]
+bmi = ARGV[0].to_f / ARGV[1].to_f * ARGV[1].to_f
 puts bmi
 
 case 

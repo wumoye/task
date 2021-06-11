@@ -1,4 +1,4 @@
-t = ARGV[0]
+t = ARGV[0].to_i
 puts t
 
 if t == (4..10) then
