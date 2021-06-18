@@ -92,3 +92,8 @@ end
 
 puts ""
 
+
+(1..100).each { |i| puts "#{i} fizz" if i%3==0}
+(1..100).each { |i| puts "#{i} Buzz" if i%5==0}
+(1..100).each { |i| puts "#{i} fizz Buzz" if i%3==0 && i%5==0}
+(1..100).each { |i| puts "#{i}" if i%3==1 && i%5==1}
