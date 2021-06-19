@@ -1,17 +1,17 @@
 # うるう年
-def leap_year
-    for year in 1900..2019 do
-        if year%100 == 0 && year%400 != 0 then
-            puts "#{year}年：平年"
-        elsif year%4 == 0 then
-            puts "#{year}年：閏年"
-        else
-            puts "#{year}年：平年"
-        end
+def leap_year(year)
+    if year%100 == 0 && year%400 != 0 then
+        puts "#{year}年：平年"
+    elsif year%4 == 0 then
+        puts "#{year}年：閏年"
+    else
+        puts "#{year}年：平年"
     end
 end
 
-leap_year
+for num in 1900..2021 do
+    leap_year(num)
+end
 
 puts "\n"
 
