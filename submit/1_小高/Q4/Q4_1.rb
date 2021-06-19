@@ -1,15 +1,29 @@
 year = 1900..2019
 
-year.each{|num|
-	if(num % 4 === 0)then
-			if(num % 100 === 0)then print num ,":平年\n"
-			else print num, ":閏年\n"
+class Foo
+	def a(num)
+		if(num % 4 === 0)then
+			if(num % 100 === 0)then return false
+			else return true
 			end
-	else print num, ":平年\n"
+		else return false
+		end
+
+
 	end
 
 
 
+
+
+end
+
+year.each{|num|
+#b = a(b)
+foo=Foo.new
+
+
+if (foo.a(year)=false)then  print num ,":平年\n"
+else print num, ":閏年\n"
+
 }
-
-
