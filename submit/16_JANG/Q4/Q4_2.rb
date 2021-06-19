@@ -1,5 +1,3 @@
-# num = ARGV[0].to_i
-
 def multi(num)
   (1..num).each do |i|
     (1..num).each do |j|
