@@ -129,12 +129,13 @@ def generate_price
 end
 
 p "携帯電話："
+cellphones = Array.new
 (1..3).each do |i|
     screen_size = rand(13..19)
     phone_number = rand(10000000..99999999)
-    cp = CellPhone.new(generate_code, "携帯", generate_price, screen_size, phone_number)
-    number = cp.phone_number.to_s
-    p i.to_s + ")" + cp.desc
+    cellphones.append(CellPhone.new(generate_code, "携帯", generate_price, screen_size, phone_number))
+    number = cellphones[i - 1].phone_number.to_s
+    p i.to_s + ")" + cellphones[i - 1].desc
 end
 
 p "デジカメ："
