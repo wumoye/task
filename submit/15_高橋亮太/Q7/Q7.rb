@@ -11,9 +11,8 @@ module Hoge
 end
 
 class Test
-    include Hoge
-    def foo()
-        foo
+    class << self
+      include Hoge
     end
 end
 
@@ -24,7 +23,23 @@ puts Test.foo
 #Q7-2
 puts "\n\nQ7-2"
 
+hello = "hello world"
+def hello.print
+    puts "data : " + self
+end
+
+hello.print
+
 
 #Q7-3
 puts "\n\nQ7-3"
+class Array
+    def with_order_print()
+        self.each_with_index do |v,i|
+            puts "#{i+1})#{v}"
+        end
+    end
+end
 
+sample_array = ["stay","foolish","stay","hungry"]
+sample_array.with_order_print
