@@ -80,6 +80,7 @@ end
 #####################
 
 puts "携帯電話:"
+phones = Array.new
 (1..3).each do |i|
     code = rand(100000)
     price = rand(50000..100000)
@@ -88,10 +89,12 @@ puts "携帯電話:"
     
     phone = Phone.new(code, "携帯電話", price, size, num)
     print i , ")"
+    phones.push(phone)
     phone.print
 end
 
 puts "デジカメ:"
+cameras = Array.new
 (1..5).each do |i|
     code = rand(100000)
     price = rand(50000..100000)
@@ -99,6 +102,7 @@ puts "デジカメ:"
     
     camera = Camera.new(code, "デジカメ", price, pixel)
     print i , ")"
+    
     camera.print
 end
 
