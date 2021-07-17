@@ -2,7 +2,8 @@ module Hoge
     def foo
       "Foo" + bar
     end
-  
+    module_function :foo
+    public :foo
     private
     def bar
       "Bar"
@@ -10,6 +11,8 @@ module Hoge
 end
   
 class Test
-    extend Hoge
+    include Hoge
+    #extend Hoge
+    
 end
 puts Test.foo
