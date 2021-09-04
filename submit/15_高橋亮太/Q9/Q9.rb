@@ -36,7 +36,8 @@ class Q9
     def check_phone_num
         puts "電話番号を入力してください(ハイフン入れてください)"
         while @phone_num == ""
-            if /^0[789]0-[0-9]{4}-[0-9]{4}$/ =~ phone_num
+            phone_num = gets.chomp
+            if /^0[5-9]0-[0-9]{4}-[0-9]{4}$/ =~ phone_num
                 @phone_num = phone_num
             else
                 puts "invalid: 電話番号が不正です"
@@ -48,6 +49,7 @@ class Q9
     def check_postal_code
         puts "郵便番号を入力してください"
         while @postal_code == ""
+            postal_code = gets.chomp
             if /\A\d{3}[-]\d{4}\z/ =~ postal_code
                 @postal_code = postal_code
             else
@@ -59,6 +61,7 @@ class Q9
     def check_email
         puts "メールアドレスを入力してください"
         while @email == ""
+            email = gets.chomp
             if /\A\S+@\S+\.\S+\z/ =~ email
                 @email = email
             else
