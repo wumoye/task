@@ -8,11 +8,8 @@ class Tool
     end
   end
 class Hammer < Tool
-    def initialize(color)
-        super(color)
-    end
     def use
-        puts "color:#{@color} tool:#{self.class.to_s}"
+        super
         puts "ハンマーを使う"
     end
 end
