@@ -1,0 +1,2 @@
+reverseメソッドはreverseメソッドを使用した時のみ反転し、
+reverse!メソッドはreverse!メソッドを使用後ずっと反転する
