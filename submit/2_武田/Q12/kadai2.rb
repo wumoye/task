@@ -15,8 +15,5 @@ def hello(name="")
     end
 end
 
-
-
-
 hello("test")
 hello()
