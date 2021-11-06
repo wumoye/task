@@ -1,0 +1,57 @@
+#!/usr/bin/env ruby
+require 'thor'
+
+module CLI
+  class Command < Thor
+    class << self
+      def exit_on_failure?
+        true
+      end
+    end
+    desc "wcex <file path>", "wcex <file_path> [-c <byte count>, -w <word count>, -l <new line count>]"
+    long_desc <<-LONGDESC 
+    
+    prints word count of a file.
+
+    options:
+    コマンド:wcex [ファイル名]
+      結果:[lines=? words=? chars=?]
+    
+    　オプション:-f [ファイル名]
+    　　結果:[lines=? words=? chars=?]
+      オプション:-c
+    　　結果:バイト数のみ表示
+      オプション:-w
+    　　結果:単語数のみ表示    
+      オプション:-l
+    　　結果:行数のみ表示
+    LONGDESC
+    
+    options :w => :bool, :c => :bool, :l => :bool, :f => :bool
+    def wcex(path)
+      wc_result = `wc #{path}`
+      if $?.exitstatus != 0
+        p "command execution failed!" 
+        return
+      end
+
+      wc_arr = wc_result.split(' ')
+      wc_hash = [:l, :w, :c, :path].zip(wc_arr).to_h
+      
+      if options[:f] || (!options[:l] && !options[:w] && !options[:c])
+        slot = "lines=#{wc_hash[:l]} words=#{wc_hash[:w]} chars=#{wc_hash[:c]}"
+      else
+        slot = []
+        slot.push("lines=#{wc_hash[:l]}") if options[:l]
+        slot.push("words=#{wc_hash[:w]}") if options[:w]
+        slot.push("chars=#{wc_hash[:c]}") if options[:c]
+        slot = slot.join(' ')
+      end
+
+      result = "結果：[#{slot}]"
+      p result
+    end
+
+  end
+end
+CLI::Command.start(ARGV)
