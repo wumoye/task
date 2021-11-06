@@ -29,4 +29,4 @@ class BmiCalc < Thor
     end
 end
 
-BmiCli.start(ARGV)
+BmiCalc.start(ARGV)
