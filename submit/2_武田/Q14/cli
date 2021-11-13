@@ -1,0 +1,52 @@
+require 'thor'
+
+module WcexCli
+    class Wcex < Thor
+        # ruby cli wcex test.txt
+        desc "wcex [ファイル名]", "結果:[lines=? words=? chars=?]"
+        desc "wcex -f [ファイル名]", "結果:[lines=? words=? chars=?]"
+        option :file_name, :type => :string, :aliases => :f, desc:"file"
+        
+        desc "wcex -c [ファイル名]", "結果:[chars=?]"
+        option :char, :type => :boolean, :aliases => :c, desc:"chars"
+
+        desc "wcex -w [ファイル名]", "結果:[words=?]"
+        option :word, :type => :boolean, :aliases => :w, desc:"words"
+
+        desc "wcex -l [ファイル名]", "結果:[lines=?]"
+        option :line, :type => :boolean, :aliases => :l, desc:"lines"
+
+        def wcex(file=options[:file_name])
+            result ={}
+            unless options['char'] | options['word']
+                result['lines'] = (`wc -l #{file}`)
+            end
+            
+            unless options['char'] | options['line']
+                result['words'] = (`wc -w #{file}`)
+            end
+            
+            unless options['word'] | options['line']
+                result['chars'] = (`wc -c #{file}`)
+            end
+
+            result.each_value do |i|
+                i.delete!(file).chop!
+            end
+            
+            output(result)
+        end
+
+        private
+        #出力メソッド
+        def output(hash)
+            print "結果:["
+            hash.each do |key, value|
+                print "#{key}=#{value}"
+            end
+            print "]"
+        end
+
+    end
+end
+WcexCli::Wcex.start(ARGV)
