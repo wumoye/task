@@ -1,0 +1,24 @@
+require'Thor'
+class Bmi < Thor
+    default_command :bmi
+    desc 'bmi', 'bmiがわかります'
+    def bmi(height, weight)
+        height = height.to_f() / 100
+        mybmi = weight.to_f() / (height.to_f * height.to_f)
+        if mybmi < 18.5
+            puts "bmi:#{mybmi.round(2)}(低体重)"
+        elsif 18.5 <= mybmi && mybmi < 25
+            puts "bmi:#{mybmi.round(2)}(普通体重)"
+        elsif 25 <= mybmi && mybmi < 30
+            puts "bmi:#{mybmi.round(2)}(肥満（１度）)"
+        elsif 30 <= mybmi && mybmi < 35
+            puts "bmi:#{mybmi.round(2)}(肥満（２度）)"
+        elsif 35 <= mybmi && mybmi < 40
+            puts "bmi:#{mybmi.round(2)}(肥満（３度）)"
+        elsif 40 <= mybmi
+            puts "bmi:#{mybmi.round(2)}(肥満（４度）)"
+        end
+    end
+end
+
+Bmi.start(ARGV)
