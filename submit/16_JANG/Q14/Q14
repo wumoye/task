@@ -1,0 +1,15 @@
+require 'thor'
+module Cli
+    class Command < Thor
+        default_command:wcex
+        desc 'wcex', 'print wc -l -w -m'
+        def wcex(text)
+            result = `wc #{text}`
+            resultArray = result.split(' ')
+            puts "結果:[lines=#{resultArray[0]} words=#{resultArray[1]} chars=#{resultArray[2]}]"
+            puts "failure" if $?.exitstatus != 0
+        end
+    end
+end
+
+Cli::Command.start(ARGV)
